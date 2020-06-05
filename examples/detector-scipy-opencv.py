@@ -13,8 +13,7 @@ def array_to_image(arr):
     w = arr.shape[2]
     arr = (arr/255.0).flatten()
     data = dn.c_array(dn.c_float, arr)
-    im = dn.IMAGE(w,h,c,data)
-    return im
+    return dn.IMAGE(w,h,c,data)
 
 def detect2(net, meta, image, thresh=.5, hier_thresh=.5, nms=.45):
     boxes = dn.make_boxes(net)

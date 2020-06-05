@@ -21,12 +21,12 @@ def predict_tactic(net, s):
         prob += math.log(pred[ind])
         if len(tac) and tac[-1] == '.':
             break
-        tac = tac + c
+        tac += c
     return (tac, prob)
 
 def predict_tactics(net, s, n):
     tacs = []
-    for i in range(n):
+    for _ in range(n):
         reset_rnn(net)
         tacs.append(predict_tactic(net, s))
     tacs = sorted(tacs, key=lambda x: -x[1])
